@@ -5,7 +5,7 @@ public class Simulator {
 	public static double MoveEnergy = 5;
 	// 일단은 5J로 설정
 	
-	public static int NodeNum = 40;
+	public static int NodeNum = 20;
 	Node [] myNodes = new Node[NodeNum];
 	// 노드 40개를 만들고
 	
@@ -61,6 +61,9 @@ public class Simulator {
 		
 		this.singleTotalEnergy = this.singleChargingEnergy + this.MoveEnergy * this.singleMoveDistance;
 		// 전체 소모에너지는 이동거리 * 미터당 이동 에너지 + 모든 클러스터에서 충전에 소모한 에너지의 합
+		
+		System.out.println("이동거리 = " + this.singleMoveDistance
+				+ ", 충전 소모에너지 = " + this.singleChargingEnergy);
 	}
 	
 	
@@ -70,7 +73,7 @@ public class Simulator {
 		
 		myTSP = new TSP(this.SingleCluster);
 		myTSP.Run();
-		this.singleMoveDistance = myTSP.result;
+		this.singleMoveDistance = myTSP.finalResult;
 		// 전체 결과를 가져온다. 아직은 거리만.
 		
 		
